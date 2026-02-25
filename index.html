@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalla de Código JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body> <div id="fase-overlay">
+        <h1 id="fase-texto"></h1>
+    </div>
+
+    <section id="pantalla-bienvenida">
+        <div class="caja-centrada">
+            <h1>¡Bienvenido a JS Code Battle!</h1>
+            <p>Prepárate para derrotar bugs escribiendo código real.</p>
+            <button class="boton-proximo" onclick="irANombre()">INICIAR AVENTURA</button>
+        </div>
+    </section>
+
+    <section id="pantalla-nombre" style="display: none;">
+        <div class="caja-centrada">
+            <h2>¿Cómo te llamas, programad@r?</h2>
+            <input type="text" id="input-nombre" placeholder="Introduce tu nombre..." spellcheck="false">
+            <button class="boton-proximo" onclick="irASeleccion()">CONTINUAR</button>
+        </div>
+    </section>
+
+    <section id="pantalla-seleccion" style="display: none;">
+        <h1>Elige tu jugador</h1>
+        <div class="contenedor-opciones">
+            <div class="opcion" id="elegir-guerrero">
+                <h3>Guerrero</h3>
+                <div class="sprite-contenedor">
+                    <div class="sprite-animado guerrero-sprite" style="transform: scale(4);"></div>
+                </div>
+                <p>Especialista en bucles <code>for</code>.</p>
+                <button class="boton-seleccionar" onclick="seleccionarClase('guerrero')">Elegir Guerrero</button>
+            </div>
+
+            <div class="opcion" id="elegir-mago">
+                <h3>Mago</h3>
+                <div class="sprite-contenedor">
+                    <div class="sprite-animado mago-sprite" style="transform: scale(3);"></div>
+                </div>
+                <p>Maestro de las funciones <code>if/else</code>.</p>
+                <button class="boton-seleccionar" onclick="seleccionarClase('mago')">Elegir Mago</button>
+            </div>
+        </div>
+    </section>
+
+    <main id="contenedor-juego" style="display: none;">
+        <section id="pantalla-combate">
+            
+            <div class="contenedor-entidad" id="area-enemigo">
+                <div class="bloque-combate">
+                    <h2 class="nombre">Enemigo</h2>
+                    <div class="barra-vida-fondo">
+                        <div id="vida-enemigo-relleno" class="vida-relleno" style="width: 100%;"></div>
+                    </div>
+                    <div class="sprite-contenedor">
+                        <div class="sprite-animado enemigo-sprite"></div>
+                    </div>
+                    <span class="texto-vida">HP: <span id="valor-vida-enemigo">100</span></span>
+                </div>
+            </div>
+
+            <div class="contenedor-entidad" id="area-jugador">
+                <div class="bloque-combate">
+                    <h2 class="nombre" id="nombre-personaje-txt">Jugador</h2>
+                    
+                    <div class="barra-vida-fondo">
+                        <div id="vida-jugador-relleno" class="vida-relleno" style="width: 100%;"></div>
+                    </div>
+                    <span class="texto-vida">HP: <span id="valor-vida-jugador">100</span></span>
+
+                    <div class="barra-mana-fondo">
+                        <div id="mana-jugador-relleno" class="mana-relleno"></div>
+                    </div>
+                    <span class="texto-mana">MP: <span id="valor-mana-jugador">50</span></span>
+
+                    <div class="sprite-contenedor">
+                        <div id="contenedor-sprite-jugador" class="personaje"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="log-batalla">
+            <h3>Historial de Batalla</h3>
+            <div id="contenedor-mensajes">
+                <p class="entrada-log sistema">¡La batalla ha comenzado! Escribe código para atacar.</p>
+            </div>
+        </section>
+
+        <section id="consola-codigo">
+            <div class="encabezado-terminal">
+                <span>editor_javascript.js</span>
+            </div>
+            <textarea id="entrada-js" placeholder="// Ejemplo: atacar(); o for(let i=0; i<3; i++) { atacar(); }" spellcheck="false"></textarea>
+            <button id="boton-ejecutar">EJECUTAR COMANDO</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
